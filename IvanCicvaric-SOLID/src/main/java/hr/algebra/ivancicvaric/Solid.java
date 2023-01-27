@@ -14,6 +14,8 @@ public class Solid  {
 
     public static void main(String[] args) {
 
+    VoziloFactory voziloFactory=new VoziloFactory();
+
         Vlak maliVlak=new MaliVlak();
         Vlak velikiVlak= new VelikiVlak();
         Zaposlenik zaposlenik1=new Zaposlenik("Pero","Peric",10);
@@ -23,6 +25,14 @@ public class Solid  {
         Vozilo kombi=new Kombi(TipGoriva.PLIN);
         Vozilo autobus =new Autobus(TipGoriva.STRUJA);
         Vozilo kamion=new Kamion(TipGoriva.STRUJA);
+
+        Vozilo tvornickiAutomobil=voziloFactory.getVozilo("automobil",TipGoriva.STRUJA);
+        Vozilo tvornickiKamion=voziloFactory.getVozilo("Kamion",TipGoriva.PLIN);
+        Vozilo tvornickiAutobus=voziloFactory.getVozilo("Autobus",TipGoriva.PLIN);
+        Vozilo tvornickiKombi=voziloFactory.getVozilo("Kombi",TipGoriva.STRUJA);
+
+
+
 
         zaposlenik1.ParkirajVozilo(autobus);
         velikiVlak.DodajVozilo(autobus);
@@ -34,6 +44,19 @@ public class Solid  {
         maliVlak.DodajVozilo(automobil);
         zaposlenik1.ParkirajVozilo(kombi);
         maliVlak.DodajVozilo(kombi);
+        System.out.println(maliVlak);
+
+        //factory
+        zaposlenik1.ParkirajVozilo(tvornickiAutobus);
+        velikiVlak.DodajVozilo(tvornickiAutobus);
+        zaposlenik2.ParkirajVozilo(tvornickiKamion);
+        velikiVlak.DodajVozilo(tvornickiKamion);
+        System.out.println(velikiVlak);
+
+        zaposlenik2.ParkirajVozilo(tvornickiAutomobil);
+        maliVlak.DodajVozilo(tvornickiAutomobil);
+        zaposlenik1.ParkirajVozilo(tvornickiKombi);
+        maliVlak.DodajVozilo(tvornickiKombi);
         System.out.println(maliVlak);
 
         System.out.println(zaposlenik1);
